@@ -16,8 +16,8 @@ jobs:
     - name: CD into directory
       run: cd archive
 
-    - name: Update source code
-      run: eslint "src/**" --fix
+    - name: Download latest file
+      run: wget --output-document=`date +%Y-%m-%d_%H:%M:%S`.pdf https://hhinternet.blob.core.windows.net/wait-times/testing-wait-times.pdf
 
     - name: Commit changes
       uses: EndBug/add-and-commit@v5

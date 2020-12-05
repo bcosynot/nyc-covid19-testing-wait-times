@@ -1,0 +1,29 @@
+name: Download-Wait-Times
+
+on:
+  schedule:
+    cron: 0 8,11,14,17,19 * * *
+
+jobs:
+  download-file:
+    name: Download wait time file and commit it
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    
+    - name: CD into directory
+      run: cd archive
+
+    - name: Update source code
+      run: eslint "src/**" --fix
+
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v5
+      with:
+        author_name: Vivek Ranjan
+        author_email: vivek@vivekranjan.me
+        message: "Latest file"
+        add: "*.pdf"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

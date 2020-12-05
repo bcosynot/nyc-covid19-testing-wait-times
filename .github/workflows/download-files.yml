@@ -1,8 +1,9 @@
 name: Download-Wait-Times
 
 on:
+  workflow_dispatch:
   schedule:
-    cron: 0 8,11,14,17,19 * * *
+    - cron: 0 8,11,14,17,19 * * *
 
 jobs:
   download-file:

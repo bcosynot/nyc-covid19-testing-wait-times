@@ -12,12 +12,9 @@ jobs:
     steps: 
     - name: Checkout repo
       uses: actions/checkout@v2
-    
-    - name: CD into directory
-      run: cd archive
 
     - name: Download latest file
-      run: wget --output-document=`date +%Y-%m-%d_%H:%M:%S`.pdf https://hhinternet.blob.core.windows.net/wait-times/testing-wait-times.pdf
+      run: cd archive && wget --output-document=`date +%Y-%m-%d_%H:%M:%S`.pdf https://hhinternet.blob.core.windows.net/wait-times/testing-wait-times.pdf
 
     - name: Commit changes
       uses: EndBug/add-and-commit@v5
